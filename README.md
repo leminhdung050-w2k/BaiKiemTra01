@@ -37,3 +37,18 @@ Câu 2: Tính năng Init-only Properties (init) trong C# 9/10 khác gì so với
 | 5 | Dữ liệu dùng chung giữa nhiều thread | Không đổi sau khi tạo nên không cần lock |
 | 6 | Dữ liệu test, Builder | Dựng đối tượng nhanh bằng initializer |
 | 7 | Sự kiện, message (event sourcing, message queue) | Sự kiện đã xảy ra thì không được sửa |
+
+Câu 3: Phân biệt sự khác nhau giữa phương thức virtual ở lớp cha và phương
+thức override ở lớp con khi triển khai tính Đa hình (Polymorphism).
+1. Phương thức virtual (Ở lớp Base / Lớp cha)
+- Mục đích: Cung cấp sẵn một phần cài đặt mặc định (implementation) cho phương thức.
+- Cấp quyền kế thừa: Đóng vai trò như một giấy phép cho phép các lớp con dẫn xuất có quyền định nghĩa lại hành vi nếu cần.
+- Hành vi mặc định: Nếu lớp con không viết lại phương thức này, chương trình sẽ tự động gọi logic mặc định của lớp cha khi thực thi.
+2. Phương thức override (Ở lớp Derived / Lớp con)
+- Mục đích: Triển khai lại hoặc thay thế hoàn toàn logic thực thi của một phương thức virtual (hoặc abstract) được kế thừa từ lớp cha.
+- Cơ chế liên kết động (Dynamic Dispatch / Late Binding): Khi gọi phương thức qua một biến tham chiếu kiểu lớp cha nhưng trỏ đến thể hiện thực tế của lớp con (ví dụ: Animal a = new Dog(); a.Speak();), hệ thống CLR sẽ tra bảng phương thức ảo (v-table) tại thời điểm chạy (runtime) để thực thi đúng mã lệnh trong phương thức override của lớp con thay vì gọi mã của lớp cha.
+
+Câu 4: Tại sao một thành phần được khai báo là static trong Lớp (Class) lại không thể
+truy xuất thông qua một thể hiện (Object Instance) được tạo bằng toán tử new?
+
+
