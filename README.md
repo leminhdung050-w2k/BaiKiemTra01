@@ -50,5 +50,11 @@ thức override ở lớp con khi triển khai tính Đa hình (Polymorphism).
 
 Câu 4: Tại sao một thành phần được khai báo là static trong Lớp (Class) lại không thể
 truy xuất thông qua một thể hiện (Object Instance) được tạo bằng toán tử new?
+1. Khác biệt về cấp độ sở hữu bộ nhớ
+- Cấp độ Kiểu dữ liệu (Type / Class level): Thành phần static thuộc sở hữu chung của toàn bộ lớp, được nạp và khởi tạo một lần duy nhất vào bộ nhớ khi kiểu dữ liệu đó được tải, dùng chung cho toàn bộ chương trình.
+- Cấp độ Đối tượng (Object level): Một thể hiện tạo bằng toán tử new chỉ quản lý vùng nhớ và trạng thái dữ liệu độc lập của riêng cá thể đối tượng đó trên vùng nhớ Heap.
+2. Định hướng thiết kế ngôn ngữ của C#
+- Tránh nhầm lẫn ngữ nghĩa: Trình biên dịch cấm truy xuất qua thể hiện (như instance.StaticMember) để lập trình viên không ngộ nhận rằng giá trị của thành phần đó phụ thuộc hoặc thay đổi riêng biệt theo từng đối tượng.
+- Đảm bảo tính tường minh của mã nguồn (Code Clarity): Phân định rạch ròi ngay tại cú pháp gọi hàm giữa hành vi toàn cục thuộc về hệ thống (như Math.Sqrt(), DateTime.Now) và hành vi xử lý dữ liệu nội bộ của một đối tượng cụ thể.
 
 
