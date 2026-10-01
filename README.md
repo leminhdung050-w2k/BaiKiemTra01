@@ -13,4 +13,25 @@ Câu 1: Trình bày sự khác nhau giữa Value Types (Kiểu giá trị) và R
 | Ví dụ | int, double, bool, char, decimal, struct, enum, DateTime | class, interface, delegate, array, string, object, dynamic |
 
 Câu 2: Tính năng Init-only Properties (init) trong C# 9/10 khác gì so với thuộc tính có set thông thường? Nêu trường hợp sử dụng thực tế.
-
+- Init-only property dùng accessor init thay cho set. Thuộc tính này chỉ được gán giá trị trong giai đoạn khởi tạo đối tượng. Sau khi đối tượng được tạo xong, nó trở thành chỉ đọc.
+- Đối với các phiên bản init ra mắt ở C# 9 (.NET 5). C# 10 không thêm tính năng mới cho init, nhưng bổ sung record struct và readonly record struct, cũng dùng init. Từ khóa required (bắt buộc phải gán) là của C# 11.
+- So sánh init và set
+| Tiêu chí | get; set; | get; init; |
+|---|---|---|
+| Gán trong object initializer | Được | Được |
+| Gán trong constructor | Được | Được |
+| Gán sau khi đối tượng đã khởi tạo | Được, bất kỳ lúc nào | Không, lỗi biên dịch |
+| Tính bất biến (immutability) | Không | Có (ở mức nông) |
+| Dùng với with expression (record) | Không áp dụng | Có |
+| Thread-safe sau khi khởi tạo | Cần tự bảo vệ | An toàn hơn vì không đổi |
+| Kiểm tra | Compile-time | Compile-time (runtime vẫn bị reflection vượt qua) |
+- Các trường hợp sử dụng thực tế
+| STT | Tình huống | Lý do dùng init |
+|---|---|---|
+| 1 | DTO, request/response model của Web API | Dữ liệu chỉ cần gán một lần khi deserialize, tránh bị sửa vô ý trong pipeline |
+| 2 | Options, cấu hình ứng dụng | Khởi tạo gọn bằng object initializer, sau đó không đổi |
+| 3 | Value Object, Entity trong DDD | Giữ bất biến mà không cần constructor nhiều tham số |
+| 4 | Record | Positional record tự sinh thuộc tính init |
+| 5 | Dữ liệu dùng chung giữa nhiều thread | Không đổi sau khi tạo nên không cần lock |
+| 6 | Dữ liệu test, Builder | Dựng đối tượng nhanh bằng initializer |
+| 7 | Sự kiện, message (event sourcing, message queue) | Sự kiện đã xảy ra thì không được sửa |
