@@ -27,6 +27,7 @@ Câu 2: Tính năng Init-only Properties (init) trong C# 9/10 khác gì so với
 | Thread-safe sau khi khởi tạo | Cần tự bảo vệ | An toàn hơn vì không đổi |
 | Kiểm tra | Compile-time | Compile-time (runtime vẫn bị reflection vượt qua) |
 - Các trường hợp sử dụng thực tế
+
 | STT | Tình huống | Lý do dùng init |
 |---|---|---|
 | 1 | DTO, request/response model của Web API | Dữ liệu chỉ cần gán một lần khi deserialize, tránh bị sửa vô ý trong pipeline |
