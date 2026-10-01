@@ -16,6 +16,7 @@ Câu 2: Tính năng Init-only Properties (init) trong C# 9/10 khác gì so với
 - Init-only property dùng accessor init thay cho set. Thuộc tính này chỉ được gán giá trị trong giai đoạn khởi tạo đối tượng. Sau khi đối tượng được tạo xong, nó trở thành chỉ đọc.
 - Đối với các phiên bản init ra mắt ở C# 9 (.NET 5). C# 10 không thêm tính năng mới cho init, nhưng bổ sung record struct và readonly record struct, cũng dùng init. Từ khóa required (bắt buộc phải gán) là của C# 11.
 - So sánh init và set
+
 | Tiêu chí | get; set; | get; init; |
 |---|---|---|
 | Gán trong object initializer | Được | Được |
