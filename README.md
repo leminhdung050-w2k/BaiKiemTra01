@@ -12,3 +12,5 @@ Câu 1: Trình bày sự khác nhau giữa Value Types (Kiểu giá trị) và R
 | Giá trị mặc định | 0, false, \0... | null |
 | Ví dụ | int, double, bool, char, decimal, struct, enum, DateTime | class, interface, delegate, array, string, object, dynamic |
 
+Câu 2: Tính năng Init-only Properties (init) trong C# 9/10 khác gì so với thuộc tính có set thông thường? Nêu trường hợp sử dụng thực tế.
+
